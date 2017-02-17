@@ -12,6 +12,9 @@ $("#signup").ajaxForm({
 	dataType : "json",
 	success : function(response){
 		console.log(response);
+	},
+	error : function(response){
+		console.log(response);
 	}
 });
 });

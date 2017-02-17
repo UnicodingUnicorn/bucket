@@ -19,7 +19,7 @@ module.exports = function(mongoose, models){
 				if(!err){
 					req.decoded = decoded;
 				}
-			}
+			});
 		}
 		next();
 	}
@@ -85,7 +85,7 @@ module.exports = function(mongoose, models){
 			}
 			if(req.body.password == user.password){
 				var token = jwt.sign(newuser, secret, {
-					expiresInMinutes : 1440
+					expiresIn : 60 * 60 * 24
 				});
 				res.status(200).json({
 					success : true,

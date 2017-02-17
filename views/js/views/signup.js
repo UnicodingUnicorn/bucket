@@ -13,10 +13,10 @@ window.onload = function(){
 				};
 				Vue.http.post("/api/createuser", formData, {emulateJSON : true}).then(
 					function(res){
-						console.log("Success");
+						message = res.body;
 					},
 					function(res){
-						console.log("Error");
+						message = res.body;
 					}
 				);
 			}

@@ -1,5 +1,6 @@
 module.exports = function(mongoose, models){
 	var User = models.User;
+	var GS = models.GS;
 	
 	var jwt = require("jsonwebtoken");
 	var secret = "tableflip";

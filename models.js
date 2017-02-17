@@ -7,6 +7,16 @@ var User = mongoose.model("User", new Schema({
 	unit : String
 }));
 
+var GS = mongoose.model("Good", new Schema({
+	name : String,
+	picture : String,
+	type : String,
+	description : String,
+	owner : { type: Schema.Types.ObjectId, ref: 'User'},
+	holder : { type: Schema.Types.ObjectId, ref: 'User'}
+}));
+
 module.exports = {
-	User : User
+	User : User,
+	GS : GS
 };

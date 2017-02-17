@@ -30,7 +30,6 @@ module.exports = function(mongoose, models){
 	});
 	
 	api.post("/createuser", function(req, res){
-		console.log(req.body);
 		User.findOne({unit : req.body.unit}, function(err, user){
 			if(err){
 				res.status(500).send({
@@ -39,7 +38,8 @@ module.exports = function(mongoose, models){
 				});
 				return;
 			}else if(user){
-				res.status(200).send({
+				console.log(user);
+				res.status(400).send({
 					success : false,
 					message : "Unit already has account registered"
 				});

@@ -22,7 +22,7 @@ module.exports = function(mongoose, models){
 			});
 		}
 		next();
-	}
+	});
 	
 	api.get("/", function(req, res){
 		res.status(200).json({message : "Received"});

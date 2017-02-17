@@ -9,7 +9,7 @@ module.exports = function(mongoose, models){
 	
 	var bodyParser = require("body-parser");
 	api.use(bodyParser.json());
-	api.use(bodyParser.urlencoded({extended : true});
+	api.use(bodyParser.urlencoded({extended : true}));
 	
 	api.get("/", function(req, res){
 		res.status(200).json({message : "Received"});

@@ -17,6 +17,7 @@
 					password : $("#password").val(),
 					unit : $("#unit").val()
 				};
+				alert(formData);
 				$.post("/api/createuser", formData).done(function(data){
 					alert( "Data Loaded: " + data );
 				});

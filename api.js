@@ -9,7 +9,7 @@ module.exports = function(mongoose, models){
 	
 	var bodyParser = require("body-parser");
 	api.use(bodyParser.json());
-	api.use(bodyParser.urlencoded({extended : true});
+	api.use(bodyParser.urlencoded({extended : true}));
 	
 	api.use(function(req, res, next){
 		req.decoded = undefined;
@@ -57,7 +57,7 @@ module.exports = function(mongoose, models){
 					return;
 				};
 				var token = jwt.sign(newuser, secret, {
-					expiresInMinutes : 1440
+					expiresIn : 60 * 60 * 24
 				});
 				res.status(200).json({
 					success : true,

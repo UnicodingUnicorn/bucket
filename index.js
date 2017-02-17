@@ -1,6 +1,6 @@
 var express = require("express");
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://fliptable:password@localhost:27018/fliptable");
+mongoose.connect("mongodb://fliptable:password@127.0.0.1:27017/fliptable");
 
 var app = express();
 

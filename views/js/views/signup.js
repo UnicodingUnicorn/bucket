@@ -11,8 +11,8 @@ window.onload = function(){
 					password : $("#password").val(),
 					unit : $("#unit").val()
 				};
-				message = stuff;
-				Vue.http.post("/api/createuser", formData, {emulateJSON : true}).then(
+				message = "stuff";
+				/*Vue.http.post("/api/createuser", formData, {emulateJSON : true}).then(
 					function(res){
 						return res.json();
 					},
@@ -21,7 +21,7 @@ window.onload = function(){
 					}
 				).then(function(json){
 					message = json;
-				});
+				});*/
 			}
 		}
 	});

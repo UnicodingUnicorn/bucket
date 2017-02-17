@@ -8,6 +8,6 @@ $("#signup").ajaxForm({
 	url : "/api/createuser",
 	dataType : "json",
 	success : function(response){
-		vm.message = response.message;
+		console.log(response);
 	}
 });

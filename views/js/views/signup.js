@@ -6,20 +6,12 @@ window.onload = function(){
 		},
 		methods : {
 			signup : function(){
-				/*var formData = {
+				var formData = {
 					username : $("#username").val(),
 					password : $("#password").val(),
 					unit : $("#unit").val()
 				};
 				Vue.http.post("/api/createuser", formData, {emulateJSON : true}).then(
-					function(res){
-						console.log(res.body)
-					},
-					function(res){
-						console.log(res.body)
-					}
-				);*/
-				Vue.http.get("/api", formData, {emulateJSON : true}).then(
 					function(res){
 						console.log(res.body)
 					},

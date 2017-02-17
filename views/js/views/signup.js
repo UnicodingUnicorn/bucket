@@ -6,10 +6,12 @@ var vm = new Vue({
 	}
 });
 };
+$(document).ready(function() { 
 $("#signup").ajaxForm({
 	url : "/api/createuser",
 	dataType : "json",
 	success : function(response){
 		console.log(response);
 	}
+});
 });

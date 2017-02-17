@@ -14,10 +14,10 @@
 	</head>
 	<body>
 		<div  id="app" class="row">
-			<div v-if="message!=''" class="card-panel col s8 offset-s2">
+			<div v-show="message!=''" class="card-panel col s8 offset-s2">
 				{{message}}
 			</div>
-			<form id="signup" class="col s8 offset-s2" action="/api/createuser" method="post">
+			<form id="signup" class="col s8 offset-s2">
 				<div class="row">
 					<div class="input-field col s12">
 						<input id="username" type="text" class="validate">
@@ -36,8 +36,8 @@
 						<label for="password">Password</label>
 					</div>
 				</div>
-				<!--button class="waves-effect waves-light btn" v-on:click="signup">Submit!</button-->
-				<input class="waves-effect waves-light btn" type="submit" value="Submit!">
+				<button class="waves-effect waves-light btn" v-on:click="signup">Submit!</button>
+				<!--input class="waves-effect waves-light btn" type="submit" value="Submit!"-->
 			</form>
 		</div>
 	</body>

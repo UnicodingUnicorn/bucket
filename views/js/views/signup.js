@@ -3,7 +3,7 @@ window.onload = function(){
 		el : "#app",
 		data : {
 			message : ""
-		}/*,
+		},
 		methods : {
 			signup : function(){
 				var formData = {
@@ -12,7 +12,7 @@ window.onload = function(){
 					unit : $("#unit").val()
 				};
 				message = "stuff";
-				Vue.http.post("/api/createuser", formData, {emulateJSON : true}).then(
+				/*Vue.http.post("/api/createuser", formData, {emulateJSON : true}).then(
 					function(res){
 						return res.json();
 					},
@@ -21,13 +21,13 @@ window.onload = function(){
 					}
 				).then(function(json){
 					message = json;
-				});
+				});*/
 			}
-		}*/
+		}
 	});
 	
 };
-$(document).ready(function() { 
+/*$(document).ready(function() { 
 	$("#signup").ajaxForm({
 		url : "/api/createuser",
 		dataType : "json",
@@ -38,4 +38,4 @@ $(document).ready(function() {
 			console.log(response);
 		}
 	});
-});
+});*/

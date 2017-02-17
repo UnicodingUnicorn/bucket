@@ -39,7 +39,7 @@ module.exports = function(mongoose, models){
 				});
 				return;
 			}else if(user){
-				res.status(400).send({
+				res.status(200).send({
 					success : false,
 					message : "Unit already has account registered"
 				});

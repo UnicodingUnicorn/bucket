@@ -30,7 +30,7 @@ module.exports = function(mongoose, models){
 	});
 	
 	api.post("/createuser", function(req, res){
-		console.log("req");
+		console.log(req.body);
 		User.findOne({unit : req.body.unit}, function(err, user){
 			if(err){
 				res.status(500).json({

@@ -12,11 +12,11 @@ window.onload = function(){
 					unit : $("#unit").val()
 				};
 				Vue.http.post("/api/createuser", formData, {emulateJSON : true}).then(
-					response => {
-						console.log(response);
+					function(res){
+						console.log(res.body)
 					},
-					response => {
-						console.log(response);
+					function(res){
+						console.log(res.body)
 					}
 				);
 			}

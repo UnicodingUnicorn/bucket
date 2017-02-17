@@ -33,13 +33,13 @@ module.exports = function(mongoose, models){
 		console.log(req.body);
 		User.findOne({unit : req.body.unit}, function(err, user){
 			if(err){
-				res.status(500).json({
+				res.status(500).send({
 					success : false,
 					message : "Internal database error"
 				});
 				return;
 			}else if(user){
-				res.status(400).json({
+				res.status(400).send({
 					success : false,
 					message : "Unit already has account registered"
 				});
@@ -52,7 +52,7 @@ module.exports = function(mongoose, models){
 			});
 			newuser.save(function(err){
 				if(err){
-					res.status(500).json({
+					res.status(500).send({
 						success : false,
 						message : "Internal database error"
 					});
@@ -61,7 +61,7 @@ module.exports = function(mongoose, models){
 				var token = jwt.sign(newuser, secret, {
 					expiresIn : 60 * 60 * 24
 				});
-				res.status(200).json({
+				res.status(200).send({
 					success : true,
 					message : "Success",
 					token : token

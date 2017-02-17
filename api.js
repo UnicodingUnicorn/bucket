@@ -11,6 +11,19 @@ module.exports = function(mongoose, models){
 	api.use(bodyParser.json());
 	api.use(bodyParser.urlencoded({extended : true});
 	
+	api.use(function(req, res, next){
+		req.decoded = undefined;
+		var token = req.body.token || req.query.token || req.headers['x-access-token'];
+		if(token){
+			jwt.verify(token, secret, function(err, decoded){
+				if(!err){
+					req.decoded = decoded;
+				}
+			}
+		}
+		next();
+	}
+	
 	api.get("/", function(req, res){
 		res.status(200).json({message : "Received"});
 	});
@@ -52,6 +65,40 @@ module.exports = function(mongoose, models){
 					token : token
 				});
 			});
+		});
+	});
+	
+	api.post("/login", function(req, res){
+		User.findOne({username : req.body.username}, function(err, user){
+			if(err){
+				res.status(500).json({
+					success : false,
+					message : "Internal database error"
+				});
+				return;
+			}else if(!user){
+				res.status(400).json({
+					success : false,
+					message : "User not found"
+				});
+				return;
+			}
+			if(req.body.password == user.password){
+				var token = jwt.sign(newuser, secret, {
+					expiresInMinutes : 1440
+				});
+				res.status(200).json({
+					success : true,
+					message : "Logged in!",
+					token : token
+				});
+			}else{
+				res.status(400).json({
+					success : false,
+					message : "Password does not match!"
+				});
+				return;
+			}
 		});
 	});
 	

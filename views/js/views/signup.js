@@ -11,7 +11,14 @@ window.onload = function(){
 					password : $("#password").val(),
 					unit : $("#unit").val()
 				};
-				console.log(formData);
+				Vue.http.post("/api/createuser", formData, {emulateJSON : true}).then(
+					response => {
+						console.log(response);
+					},
+					response => {
+						console.log(response);
+					}
+				);
 			}
 		}
 	});

@@ -12,6 +12,14 @@
 		<script>
 			$("#signup").submit(function(event){
 				event.preventDefault();
+				var formData = {
+					username : $("#username").val(),
+					password : $("#password").val(),
+					unit : $("#unit").val()
+				};
+				$.post("/api/createuser", formData).done(function(data){
+					alert( "Data Loaded: " + data );
+				});
 			});
 		</script>
 	</head>

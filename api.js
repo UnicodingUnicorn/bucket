@@ -29,7 +29,45 @@ module.exports = function(mongoose, models){
 		res.status(200).json({message : "Received"});
 	});
 	
+	api.get("/:user", function(req, res){
+		if(req.decoded != undefined){
+			
+		}
+	});
+	
+	api.get("/:gs", function(req, res){
+		
+	});
+	
+	api.post("/newitem", function(req, res){
+		
+	});
+	
+	api.post("/newneed", function(req, res){
+		
+	});
+	
+	app.post("/removeitem/:item", function(req, res){
+		
+	});
+	
+	app.post("/removeneed/:need", function(req, res){
+		
+	});
+	
+	api.post("/transfer/:holder", function(req, res){
+		if(req.decoded != undefined){
+			
+		}else{
+			res.status(400).send({
+				success : false,
+				message : "Not authenticated"
+			});
+		}
+	});
+	
 	api.post("/createuser", function(req, res){
+		console.log(req.body);
 		User.findOne({unit : req.body.unit}, function(err, user){
 			if(err){
 				res.status(500).send({
@@ -37,8 +75,7 @@ module.exports = function(mongoose, models){
 					message : "Internal database error"
 				});
 				return;
-			}else if(user){
-				console.log(user);
+			}else if(user){	
 				res.status(400).send({
 					success : false,
 					message : "Unit already has account registered"

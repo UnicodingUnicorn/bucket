@@ -10,8 +10,10 @@ var User = mongoose.model("User", new Schema({
 var GS = mongoose.model("Good", new Schema({
 	name : String,
 	picture : String,
-	type : String,
+	type : String, //Good/Service
+	requirement : String, //Need/Offer
 	description : String,
+	transactions : Number,
 	owner : { type: Schema.Types.ObjectId, ref: 'User'},
 	holder : { type: Schema.Types.ObjectId, ref: 'User'}
 }));

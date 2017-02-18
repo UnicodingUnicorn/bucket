@@ -4,18 +4,25 @@
 	<meta charset="UTF-8" />
 	<link rel="stylesheet" href="icomoon/style.css" />
 	<title>Bukct</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/materialize.min.js"></script>
 </head>
 <body>
 	<div id="app">
 		<nav>
-			<h1 v-if="view == 'request'">Request for help</h1>
-			<h1 v-else-if="view == 'donate'">Donate an item</h1>
-			<h1 v-else>{{ title }}</h1>
-			<div v-if="view == 'request'">
-				<div v-on:click="request.submit"><i class="icon-check"></i></div>
-			</div>
-			<div v-else-if="view == 'donate'">
-				<div v-on:click="donate.submit"><i class="icon-check"></i></div>
+			<div class="nav-wrapper">
+				<h1 v-if="view == 'request'">Request for help</h1>
+				<h1 v-else-if="view == 'donate'">Donate an item</h1>
+				<h1 v-else>{{ title }}</h1>
+				<div v-if="view == 'request'">
+					<div v-on:click="request.submit"><i class="icon-check"></i></div>
+				</div>
+				<div v-else-if="view == 'donate'">
+					<div v-on:click="donate.submit"><i class="icon-check"></i></div>
+				</div>
 			</div>
 		</nav>
 		<main>

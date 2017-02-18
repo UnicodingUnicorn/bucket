@@ -9,7 +9,6 @@ var User = mongoose.model("User", new Schema({
 
 var GS = mongoose.model("Good", new Schema({
 	name : String,
-	picture : String,
 	type : String, //Good/Service
 	requirement : String, //Need/Offer
 	description : String,

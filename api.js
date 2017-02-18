@@ -26,16 +26,32 @@ module.exports = function(mongoose, models){
 	});
 	
 	api.get("/", function(req, res){
+		
 		res.status(200).json({message : "Received"});
 	});
 	
-	api.get("/:user", function(req, res){
-		if(req.decoded != undefined){
-			
-		}
+	api.get("/:user", function(req, res){ 
+		User.findOne({username : req.params.username}, function(err, user){
+			if(err){
+				res.status(500).json({
+					success : false,
+					message : "Internal database error"
+				});
+			}else if(!user){
+				res.status(400).json({
+					success : false,
+					message : "Username not found"
+				});
+			}
+			res.status(200).json({
+				success : true,
+				message : "Retrieve success",
+				user : user
+			});
+		});
 	});
 	
-	api.get("/:gs", function(req, res){
+	api.get("/:gs", function(req, res){ //id
 		
 	});
 	

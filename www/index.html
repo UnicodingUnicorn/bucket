@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="style.css" />
+	<title>Bukct</title>
+</head>
+<body>
+	<div id="app">
+		<nav>
+			<h1>{{ title }}</h1>
+		</nav>
+		<main>
+			<div v-if="view == 'home'">
+				<h1>Requested</h1>
+				<ul>
+					<li v-for="item in requested"></li>
+				</ul>
+				<h1>Donated</h1>
+				<ul>
+					<li v-for="item in donated"></li>
+				</ul>
+			</div>
+			<div v-if="view == 'donate'">
+				<h1>Donate an item</h1>
+				<div class="form-group">
+					<input type="text" placeholder="Name" v-model="donate.name" />
+				</div>
+				<div class="form-group">
+					<input type="checkbox" v-model="donate.selfcollect" id="selfcollect" /> <label for="selfcollect">Will bring down to the RC</label>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script>
+		(() => {
+			const app = new Vue({
+				el: '#app',
+				data: {
+					title: 'Buckt',
+					view: 'donate',
+					donate: {
+					},
+				},
+			})
+			
+		})()
+	</script>
+</body>
+</html>

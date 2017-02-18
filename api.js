@@ -44,7 +44,7 @@ module.exports = function(mongoose, models){
 					return;
 				};
 				var token = jwt.sign(newuser, secret, {
-					expiresInMinutes : 1440
+					expiresIn : 60 * 60 * 24
 				});
 				res.status(200).json({
 					success : true,

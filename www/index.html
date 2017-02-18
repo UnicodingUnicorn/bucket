@@ -25,7 +25,7 @@
 					Request an item
 				</div>
 				<ul v-if="requested">
-					<li v-for="item in requested">item.description</li>
+					<li v-for="item in requested">{{ item.description }}</li>
 				</ul>
 				<div v-else>
 					Nothing requsted
@@ -35,7 +35,7 @@
 					Donate an item
 				</div>
 				<ul v-if="requested">
-					<li v-for="item in donated">item.description</li>
+					<li v-for="item in donated">{{ item.description }}</li>
 				</ul>
 				<div v-else>
 					Nothing donated
@@ -63,7 +63,7 @@
 					<textarea placeholder="Description" v-model="request.description"></textarea>
 				</div>
 				<div class="form-group">
-
+					
 				</div>
 			</div>
 		</main>
@@ -81,12 +81,31 @@
 					},
 					request: {
 					},
-					requested: {
-
-					},
-					donated: {
-
-					},
+					requested: [
+						{
+							description: "Help with P4 math",
+						},
+						{
+							description: "Ladder",
+						},
+						{
+							description: "P5 Science Textbook",
+						},
+					],
+					donated: [
+						{
+							description: "Milo packs",
+						},
+						{
+							description: "P2 Math Textbook",
+						},
+						{
+							description: "Canned soup",
+						},
+						{
+							description: "Toaster",
+						},
+					],
 				},
 				methods: {
 					donate: {

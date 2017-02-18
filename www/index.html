@@ -9,6 +9,11 @@
 	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('select').material_select();
+		});
+	</script>
 </head>
 <body>
 	<div id="app">
@@ -26,60 +31,99 @@
 			</div>
 		</nav>
 		<main>
-			<div class="row">
-				<div class="col s8 offset-s2">
-					<div class="card">
-
+			<div class="comtaimer"  v-if="view == 'home'">
+				<div class="row">
+					<div class="col s8 offset-s2">
+						<div class="card">
+							<div class="card-content">
+								<span class="card-title">Requested</span>
+								<ul v-if="requested" class="collection">
+									<li class="collection-item" v-for="item in requested">{{ item.description }}</li>
+								</ul>
+								<p v-else>
+									Nothing requested
+								</p>
+							</div>
+							<div class="card-action">
+								<a class="btn" v-on:click="view = 'request'">
+									Request an item
+								</a>	
+							</div>
+						</div>
+						
 					</div>
 				</div>
+				<div class="row">
+					<div class="col s8 offset-s2">
+						<div class="card">
+							<div class="card-content">
+								<span class="card-title">Donated</span>
+								<ul v-if="donated" class="collection">
+									<li class="collection-item" v-for="item in donated">{{ item.description }}</li>
+								</ul>
+								<p v-else>
+									Nothing donated
+								</p>
+							</div>
+							<div class="card-action">
+								<a class="btn" v-on:click="view = 'donate'">
+									Donate an item
+								</a>	
+							</div>
+						</div>
+						
+					</div>
+				</div>
+
 			</div>
-			<div v-if="view == 'home'">
-				<h1>Requested</h1>
-				<div v-on:click="view = 'request'">
-					Request an item
-				</div>
-				<ul v-if="requested">
-					<li v-for="item in requested">{{ item.description }}</li>
-				</ul>
-				<div v-else>
-					Nothing requsted
-				</div>
-				<h1>Donated</h1>
-				<div v-on:click="view = 'donate'">
-					Donate an item
-				</div>
-				<ul v-if="requested">
-					<li v-for="item in donated">{{ item.description }}</li>
-				</ul>
-				<div v-else>
-					Nothing donated
-				</div>
+			<div class="row" v-if="view == 'donate'">
+				<form class="col s8 offset-s2">
+					<div class="form-group input-field col s12">
+						<textarea id="donateDescription" class="materialize-textarea" v-model="donate.description"></textarea>
+						<label for="donateDescription">Description</label>
+					</div>
+					<div class="form-group col s12">
+						<input type="checkbox" class="filled-in" v-model="donate.bringrc" id="bringrc" /> 
+						<label for="bringrc">Will bring down to the RC</label>
+					</div>
+					<div class="form-group col s12 input-field" v-if="donate.bringrc">
+						<select v-model="donate.rcname">
+							<option selected>Casa Clementi</option>
+							<option>Clementi Zone 1</option>
+							<option>Clementi Zone 2</option>
+							<option>Clementi Zone 3</option>
+							<option>Clementi Zone 4</option>
+						</select>
+					</div>				
+					<div class="row">
+						<div class="col s4">
+							<a class="btn" v-on:click="view = 'home'">Back</a> 
+						</div>
+						<div class="col s4">
+							<a class="btn">Submit</a>
+						</div>
+					</div>
+				</form>
 			</div>
-			<div v-if="view == 'donate'">
-				<div class="form-group">
-					<textarea placeholder="Description" v-model="donate.description"></textarea>
-				</div>
-				<div class="form-group">
-					<input type="checkbox" v-model="donate.bringrc" id="bringrc" /> <label for="bringrc">Will bring down to the RC</label>
-				</div>
-				<div class="form-group" v-if="donate.bringrc">
-					<select v-model="donate.rcname">
-						<option>Casa Clementi</option>
-						<option>Clementi Zone 1</option>
-						<option>Clementi Zone 2</option>
-						<option>Clementi Zone 3</option>
-						<option>Clementi Zone 4</option>
-					</select>
-				</div>
+			<div class="row" v-if="view == 'request'">
+				<form class="col s8 offset-s2">
+					<div class="form-group input-field col s12">
+						<textarea id="donateDescription" class="materialize-textarea" v-model="donate.description"></textarea>
+						<label for="donateDescription">Description</label>
+					</div>
+					<div class="row">
+						<div class="col s4">
+							<a class="btn" v-on:click="view = 'home'">Back</a> 
+						</div>
+						<div class="col s4">
+							<a class="btn">Submit</a>
+						</div>
+					</div>
+
+				</form>
 			</div>
-			<div v-if="view == 'request'">
-				<div class="form-group">
-					<textarea placeholder="Description" v-model="request.description"></textarea>
-				</div>
-				<div class="form-group">
-					
-				</div>
-			</div>
+				
+			
 		</main>
 	</div>
 	<script src="https://unpkg.com/vue/dist/vue.js"></script>

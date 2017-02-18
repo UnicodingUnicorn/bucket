@@ -14,9 +14,9 @@
 	<div id="app">
 		<nav>
 			<div class="nav-wrapper">
-				<h1 v-if="view == 'request'">Request for help</h1>
-				<h1 v-else-if="view == 'donate'">Donate an item</h1>
-				<h1 v-else>{{ title }}</h1>
+				<a v-if="view == 'request'" class="brand-logo">Request for help</a>
+				<a v-else-if="view == 'donate'" class="brand-logo">Donate an item</a>
+				<a v-else class="brand-logo">{{ title }}</a>
 				<div v-if="view == 'request'">
 					<div v-on:click="request.submit"><i class="icon-check"></i></div>
 				</div>
@@ -26,6 +26,13 @@
 			</div>
 		</nav>
 		<main>
+			<div class="row">
+				<div class="col s8 offset-s2">
+					<div class="card">
+
+					</div>
+				</div>
+			</div>
 			<div v-if="view == 'home'">
 				<h1>Requested</h1>
 				<div v-on:click="view = 'request'">
